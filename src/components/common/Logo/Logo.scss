@@ -1,0 +1,21 @@
+@import '../../../assets/sass/global';
+
+.logo {
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  .light {
+    font-size: 18px;
+    color: $color-light;
+    font-weight: 500;
+  }
+
+  .warning {
+    color: $color-secondary;
+    font-size: 20px;
+    font-weight: 800;
+  }
+}

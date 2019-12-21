@@ -1,0 +1,22 @@
+@import '../../../assets/sass/components';
+
+.menu {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+
+  .nav-button {
+    text-transform: capitalize;
+    font-weight: 200;
+    font-size: 16px;
+    margin: 0 0.8em;
+
+    &:hover {
+      color: $color-secondary;
+    }
+
+    .icons {
+      margin: 0 0.6em;
+    }
+  }
+}

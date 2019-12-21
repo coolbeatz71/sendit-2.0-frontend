@@ -1,0 +1,111 @@
+@import '../../../assets/sass/components.scss';
+@import '../../../assets/sass/global.scss';
+
+.header {
+  margin-top: 3em !important;
+  padding: 9em 2em;
+  color: $color-light !important;
+  font-size: 20px;
+  font-weight: 200;
+  line-height: 1.5em;
+  background: linear-gradient($color-dark, #151f36ef, #fd96217c),
+    url('../../../assets/img/christmas.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+
+  .legend {
+    h1 {
+      font-weight: 400;
+      line-height: 1.2em;
+    }
+
+    p {
+      margin-right: 3em;
+      text-align: justify;
+      margin-bottom: 2em;
+    }
+  }
+
+  .slides {
+    .img-slides {
+      background: $color-light;
+      border-radius: 12em;
+      padding: 1em;
+      width: 22em;
+      height: 22em;
+    }
+  }
+}
+
+@media #{$xs-device} {
+  .header {
+    padding: 6em 1em;
+    font-size: 16px;
+    font-weight: 200;
+    line-height: 1.5em;
+
+    .legend {
+      text-align: center;
+      h1 {
+        font-weight: 400;
+        line-height: 1.2em;
+      }
+
+      p {
+        margin-right: 0;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media #{$sm-device} {
+  .header {
+    padding: 5em 1em;
+    font-size: 17px;
+    font-weight: 200;
+    line-height: 1.5em;
+
+    .legend {
+      text-align: center;
+      h1 {
+        font-weight: 400;
+        line-height: 1.2em;
+      }
+
+      p {
+        margin-right: 0;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media #{$md-device} {
+  .header {
+    padding: 5em 1em;
+    font-size: 19px;
+    font-weight: 200;
+    line-height: 1.5em;
+
+    .legend {
+      margin: 2em 0;
+      h1 {
+        margin-top: 0;
+      }
+    }
+
+    .slides {
+      margin: 2em 0;
+      .img-slides {
+        background: $color-light;
+        border-radius: 12em;
+        padding: 1em;
+        width: 18em;
+        height: 18em;
+      }
+    }
+  }
+}
