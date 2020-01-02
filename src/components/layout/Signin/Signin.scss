@@ -1,0 +1,68 @@
+@import '../../../assets/sass/components.scss';
+@import '../../../assets/sass/global.scss';
+
+.signin {
+  padding: 0 0 2em !important;
+  .signin-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    line-height: 1em !important;
+
+    .avatar {
+      background: $color-success;
+      padding: 2em !important;
+      margin: 0.5em;
+    }
+  }
+
+  .social-login {
+    display: flex;
+    justify-content: center;
+
+    .btn {
+      margin: 1em 1em;
+
+      .social-icon {
+        font-size: 20px;
+        color: #fff;
+      }
+    }
+
+    .btn-facebook {
+      background: #3b5998;
+    }
+
+    .btn-google {
+      background: #dd4b39;
+    }
+  }
+
+  .button {
+    background: $color-success !important;
+    color: $color-light;
+  }
+
+  .or-signup {
+    font-weight: 200;
+    font-size: 16px;
+  }
+}
+
+@media #{$md-device} {
+  .signin {
+    padding: 2em;
+  }
+}
+
+@media #{$sm-device} {
+  .signin {
+    padding: 2em;
+  }
+}
+
+@media #{$xs-device} {
+  .signin {
+    padding: 2em;
+  }
+}
