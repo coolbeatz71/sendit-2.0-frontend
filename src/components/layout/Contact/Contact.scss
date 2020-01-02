@@ -1,0 +1,36 @@
+@import '../../../assets/sass/components.scss';
+@import '../../../assets/sass/global.scss';
+
+.contact {
+  padding: 15em 0;
+  
+  .contact-title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    line-height: 1em !important;
+    .avatar {
+      background-color: $color-secondary;
+      padding: 2em !important;
+      margin: 0.5em;
+    }
+  }
+}
+
+@media #{$md-device} {
+  .contact {
+    padding: 2em;
+  }
+}
+
+@media #{$sm-device} {
+  .contact {
+    padding: 2em;
+  }
+}
+
+@media #{$xs-device} {
+  .contact {
+    padding: 2em;
+  }
+}

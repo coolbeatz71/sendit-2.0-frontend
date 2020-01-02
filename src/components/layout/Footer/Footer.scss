@@ -1,0 +1,14 @@
+@import '../../../assets/sass/global';
+
+.footer {
+  flex-shrink: 0;
+  padding: 1em;
+  background: $color-light;
+  text-align: center;
+  color: black;
+
+  p {
+    font-size: 14px;
+    font-weight: 200;
+  }
+}
