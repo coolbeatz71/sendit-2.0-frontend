@@ -7,35 +7,39 @@ export class ErrorMessage {
    * @param {string} field
    * @returns {string} message
    */
-  required = field => {
-    return `Please, the ${field} cannot be empty`;
-  };
+  required = field => `Please, the ${field} cannot be empty`;
 
   /**
    * get the error message for email field
    * @returns {string} message
    */
-  email = () => {
-    return 'Please, enter a valid email address';
-  };
+  email = () => 'Please, enter a valid email address';
 
   /**
    * get the error message for alphabetic fields
    * @param {string} field
    * @returns {string} message
    */
-  alpha = field => {
-    return `Please, the ${field} contain alphabetic characters`;
-  };
+  alpha = field => `Please, the ${field} must only contain alphabetic characters`;
+
+  /**
+   * get the error message for invalid password
+   * @returns {string} message
+   */
+  password = () => 'Passwords must have at least 6 letters, 1 Uppercase, 1 lowercase and 1 number';
+
+  /**
+   * get the error message for unmatching password
+   * @returns {string} message
+   */
+  match = () => 'Please, password and confirmation password do not match';
 
   /**
    * get the error message for alphanumeric fields
    * @param {string} field
    * @returns {string} message
    */
-  alphaNum = field => {
-    return `Please, the ${field} contain alphanumeric characters`;
-  };
+  alphaNum = field => `Please, the ${field} contain alphanumeric characters`;
 
   /**
    * get the error message for min string length fields
@@ -43,9 +47,7 @@ export class ErrorMessage {
    * @param {int} min
    * @returns {string} message
    */
-  stringLength = (field, min) => {
-    return `Please, the ${field} must contain minimum of ${min} characters`;
-  };
+  stringLength = (field, min) => `Please, the ${field} must have at least ${min} characters`;
 }
 
 const errorMessage = new ErrorMessage();

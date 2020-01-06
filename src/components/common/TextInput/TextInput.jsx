@@ -17,7 +17,9 @@ class TextInput extends ValidatorComponent {
     const {
       variant,
       id,
+      name,
       label,
+      type,
       required,
       autoFocus,
       multiline,
@@ -41,8 +43,9 @@ class TextInput extends ValidatorComponent {
         margin="normal"
         variant={variant}
         id={id}
-        name={id}
+        name={name}
         label={label}
+        type={type}
         required={required}
         autoFocus={autoFocus}
         multiline={multiline}
@@ -56,7 +59,9 @@ class TextInput extends ValidatorComponent {
 
 TextInput.propTypes = {
   id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  type: PropTypes.string,
   required: PropTypes.bool,
   error: PropTypes.bool,
   helperText: PropTypes.string,
@@ -69,6 +74,7 @@ TextInput.propTypes = {
 TextInput.defaultProps = {
   ...ValidatorComponent.defaultProps,
   error: false,
+  type: 'text',
   helperText: undefined,
   required: false,
   variant: 'outlined',

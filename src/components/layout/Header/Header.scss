@@ -22,7 +22,6 @@
     }
 
     p {
-      margin-right: 3em;
       text-align: justify;
       margin-bottom: 2em;
     }
@@ -42,7 +41,7 @@
 @media #{$xs-device} {
   .header {
     padding: 6em 1em;
-    font-size: 16px;
+    font-size: 15.5px;
     font-weight: 200;
     line-height: 1.5em;
 
@@ -64,7 +63,7 @@
 @media #{$sm-device} {
   .header {
     padding: 5em 1em;
-    font-size: 17px;
+    font-size: 16px;
     font-weight: 200;
     line-height: 1.5em;
 

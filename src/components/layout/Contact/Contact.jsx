@@ -155,6 +155,7 @@ export class Contact extends Component {
             >
               <TextInput
                 id="email"
+                name="email"
                 label="Email"
                 autoFocus
                 required
@@ -165,15 +166,17 @@ export class Contact extends Component {
               />
               <TextInput
                 id="fullName"
+                name="fullName"
                 label="Full name"
                 required
                 onChange={this.onChange}
                 value={fullName}
-                validators={['trim', 'required', 'matchRegexp:^[a-zA-Z\\-\\_\\s]+$']}
+                validators={['trim', 'required', 'matchRegexp:^[a-zA-Z\\-\\s]+$']}
                 errorMessages={[requiredFullName, requiredFullName, invalidFullName]}
               />
               <TextInput
                 id="subject"
+                name="subject"
                 label="Subject"
                 required
                 onChange={this.onChange}
@@ -183,6 +186,7 @@ export class Contact extends Component {
               />
               <TextInput
                 id="message"
+                name="message"
                 label="Message"
                 required
                 multiline

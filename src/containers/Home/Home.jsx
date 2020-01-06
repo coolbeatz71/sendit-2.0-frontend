@@ -12,7 +12,7 @@ import './Home.scss';
  * @param {object} props
  * @returns {object} JSX
  */
-export default function Home({ isAuth }) {
+const Home = ({ isAuth }) => {
   return !isAuth ? (
     <React.Fragment key={0}>
       <NavBar />
@@ -24,7 +24,7 @@ export default function Home({ isAuth }) {
   ) : (
     'The person suppose to login'
   );
-}
+};
 
 Home.defaultProps = {
   isAuth: null,
@@ -33,3 +33,5 @@ Home.defaultProps = {
 Home.propTypes = {
   isAuth: PropTypes.bool,
 };
+
+export default Home;
