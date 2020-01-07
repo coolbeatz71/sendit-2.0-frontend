@@ -8,6 +8,7 @@ import logistic from '../../../assets/img/undraw_logistic.svg';
 import moving from '../../../assets/img/undraw_moving.svg';
 import { openSignUpModal } from '../../../redux/actions';
 import { OPEN_SIGNUP_MODAL } from '../../../redux/action-types';
+import { HomeContext } from '../../../contexts/HomeContext';
 import Signup from '../Signup/Signup';
 import Modal from '../Modal/Modal';
 import './Header.scss';
@@ -35,9 +36,13 @@ const Header = props => {
    */
   const signUpModal = () => {
     return (
-      <Modal from={OPEN_SIGNUP_MODAL}>
-        <Signup />
-      </Modal>
+      <HomeContext.Consumer>
+        {context => (
+          <Modal from={OPEN_SIGNUP_MODAL}>
+            <Signup context={context} />
+          </Modal>
+        )}
+      </HomeContext.Consumer>
     );
   };
 

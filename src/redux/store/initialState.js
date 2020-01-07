@@ -1,14 +1,13 @@
-import checkToken from '../../helpers/checkToken';
+import isAuthorized from '../../helpers/authorization';
 import img from '../../assets/img/blank_profile_pic.png';
 
 const initialState = {
   currentUser: {
-    isAuth: !!checkToken(),
-    user: checkToken() || {
-      firstName: '',
-      lastName: '',
-      email: '',
+    isAuth: isAuthorized(),
+    user: isAuthorized() || {
       img,
+      _id: '',
+      email: '',
       isAdmin: false,
     },
   },

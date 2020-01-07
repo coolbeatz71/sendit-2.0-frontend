@@ -9,8 +9,14 @@
     flex-direction: column;
     line-height: 1em !important;
 
-    .avatar {
+    .success-avatar {
       background: $color-success;
+      padding: 2em !important;
+      margin: 0.5em;
+    }
+
+    .error-avatar {
+      background: $color-danger;
       padding: 2em !important;
       margin: 0.5em;
     }
@@ -57,12 +63,12 @@
 
 @media #{$sm-device} {
   .signin {
-    padding: 2em;
+    padding: 0.5em;
   }
 }
 
 @media #{$xs-device} {
   .signin {
-    padding: 2em;
+    padding: 0.5em;
   }
 }

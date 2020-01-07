@@ -13,20 +13,7 @@ import Home from '../containers/Home/Home';
 export const Routes = ({ isAuth }) => (
   <Router>
     <Switch>
-      {/* <Route
-        exact
-        path={paths.SIGNUP_PATH}
-        render={props => (!isAuth ? <Signup {...props} /> : <Redirect to={paths.HOME_PATH} />)}
-      />
-
-      <Route
-        exact
-        path={paths.SIGNIN_PATH}
-        render={props => (isAuth ? <Redirect to={paths.HOME_PATH} /> : <Login {...props} />)}
-      /> */}
-
       <Route exact path={paths.HOME_PATH} render={props => <Home {...props} />} />
-      {/* <Route exact path="*" component={NotFound} /> */}
     </Switch>
   </Router>
 );
@@ -40,8 +27,6 @@ Routes.propTypes = {
  * @param {object} state
  * @returns {object} props
  */
-export const mapStateToProps = ({ currentUser: { isAuth } }) => ({
-  isAuth,
-});
+export const mapStateToProps = ({ currentUser: { isAuth } }) => ({ isAuth });
 
 export default connect(mapStateToProps)(Routes);
