@@ -1,16 +1,18 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
+import { GoogleLogin } from 'react-google-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { ValidatorForm } from 'react-form-validator-core';
-import { Button, Grid, Box, Avatar, CircularProgress, Fab } from '@material-ui/core';
+import { Button, Grid, Box, Avatar, CircularProgress } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import Container from '@material-ui/core/Container';
 import TextInput from '../../common/TextInput/TextInput';
+import SocialButton from '../../common/Button/SocialButton';
 import errorMessage from '../../../helpers';
 import './Signin.scss';
 
@@ -92,11 +94,11 @@ export class Signin extends Component {
     const { email, password, isLoading } = this.state;
 
     return (
-      <Box className="signin" id="sigin">
+      <Box className="signin" id="signin">
         <Container component="main" maxWidth="md">
           <CssBaseline />
           <Box className="signin-title">
-            <Avatar className="avatar">
+            <Avatar className="success-avatar">
               <FontAwesomeIcon size="2x" icon={faSignInAlt} />
             </Avatar>
           </Box>
@@ -157,12 +159,30 @@ export class Signin extends Component {
             <p className="or-signup">signup using</p>
           </Box>
           <Grid className="social-login">
-            <Fab className="btn btn-facebook">
-              <FontAwesomeIcon className="social-icon" icon={faFacebook} />
-            </Fab>
-            <Fab className="btn btn-google">
-              <FontAwesomeIcon className="social-icon" icon={faGoogle} />
-            </Fab>
+            <FacebookLogin
+              appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+              callback={response => this.responseSocialLogin({ response, provider: 'facebook' })}
+              render={renderProps => (
+                <SocialButton
+                  parentClass="btn-facebook"
+                  faIcon={faFacebook}
+                  onClick={renderProps.onClick}
+                />
+              )}
+            />
+            <GoogleLogin
+              clientId={process.env.REACT_APP_GOOGLE_APP_ID}
+              render={renderProps => (
+                <SocialButton
+                  parentClass="btn-google"
+                  faIcon={faGoogle}
+                  onClick={renderProps.onClick}
+                />
+              )}
+              onSuccess={response => this.responseSocialLogin({ response, provider: 'google' })}
+              onFailure={response => this.responseSocialLogin({ response, provider: 'google' })}
+              cookiePolicy="single_host_origin"
+            />
           </Grid>
         </Container>
       </Box>
