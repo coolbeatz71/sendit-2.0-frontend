@@ -5,3 +5,16 @@ body {
 .MuiFormHelperText-contained {
   margin: 8px 0 0 !important;
 }
+
+.MuiDialogContent-root {
+  padding: 0 !important;
+}
+
+.form-error {
+  color: #f44336;
+  font-size: 0.9rem;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+  line-height: 1em;
+  letter-spacing: 0.03em;
+}

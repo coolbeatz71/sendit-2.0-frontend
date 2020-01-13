@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { Component, createRef } from 'react';
 import PropTypes from 'prop-types';
 import { ValidatorForm } from 'react-form-validator-core';

@@ -3,7 +3,7 @@
 
 .contact {
   padding: 15em 0;
-  
+
   .contact-title {
     display: flex;
     align-items: center;
@@ -25,12 +25,12 @@
 
 @media #{$sm-device} {
   .contact {
-    padding: 2em;
+    padding: 0.5em;
   }
 }
 
 @media #{$xs-device} {
   .contact {
-    padding: 2em;
+    padding: 0.5em;
   }
 }
