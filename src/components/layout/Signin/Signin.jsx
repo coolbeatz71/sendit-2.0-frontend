@@ -1,4 +1,5 @@
 import React, { Component, createRef } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { GoogleLogin } from 'react-google-login';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
@@ -8,12 +9,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { ValidatorForm } from 'react-form-validator-core';
 import { Button, Grid, Box, Avatar, CircularProgress } from '@material-ui/core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt, faSadTear } from '@fortawesome/free-solid-svg-icons';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import Container from '@material-ui/core/Container';
 import TextInput from '../../common/TextInput/TextInput';
 import SocialButton from '../../common/Button/SocialButton';
 import errorMessage from '../../../helpers';
+import { socialLogin } from '../../../redux/actions/social-login';
 import './Signin.scss';
 
 const requiredEmail = errorMessage.required('email address');
@@ -24,7 +26,6 @@ const invalidPassword = errorMessage.password();
 const initialState = {
   email: '',
   password: '',
-  isLoading: false,
 };
 
 /**
@@ -85,24 +86,38 @@ export class Signin extends Component {
   handleSubmit = () => {};
 
   /**
+   * handle user social login
+   * @param {object} props
+   * @returns {object} JSX
+   * @memberof Signin
+   */
+  responseSocialLogin = ({ response, provider }) => {
+    const { onSocialLogin } = this.props;
+    onSocialLogin(response, provider);
+  };
+
+  /**
    * render the component
    * @memberof Signin
    * @returns {object} JSX
    */
   render() {
-    const { classes } = this.props;
-    const { email, password, isLoading } = this.state;
+    const { classes, loading, error } = this.props;
+    const { email, password } = this.state;
+    const className = error ? 'error-avatar' : 'success-avatar';
+    const icons = error ? faSadTear : faSignInAlt;
 
     return (
       <Box className="signin" id="signin">
         <Container component="main" maxWidth="md">
           <CssBaseline />
           <Box className="signin-title">
-            <Avatar className="success-avatar">
-              <FontAwesomeIcon size="2x" icon={faSignInAlt} />
+            <Avatar className={className}>
+              <FontAwesomeIcon size="2x" icon={icons} />
             </Avatar>
           </Box>
           <Box className={classes.paper}>
+            {error && <div className="form-error">{error}</div>}
             <ValidatorForm
               ref={this.form}
               className={classes.form}
@@ -142,11 +157,11 @@ export class Signin extends Component {
                 <Button
                   variant="contained"
                   type="submit"
-                  disabled={isLoading}
+                  disabled={loading}
                   className="button"
                   fullWidth
                 >
-                  {isLoading && (
+                  {loading && (
                     <CircularProgress thickness={5} className={classes.btnProgress} size={30} />
                   )}
                   Sign in
@@ -162,6 +177,7 @@ export class Signin extends Component {
             <FacebookLogin
               appId={process.env.REACT_APP_FACEBOOK_APP_ID}
               callback={response => this.responseSocialLogin({ response, provider: 'facebook' })}
+              fields="name,email,picture"
               render={renderProps => (
                 <SocialButton
                   parentClass="btn-facebook"
@@ -170,6 +186,7 @@ export class Signin extends Component {
                 />
               )}
             />
+
             <GoogleLogin
               clientId={process.env.REACT_APP_GOOGLE_APP_ID}
               render={renderProps => (
@@ -181,7 +198,6 @@ export class Signin extends Component {
               )}
               onSuccess={response => this.responseSocialLogin({ response, provider: 'google' })}
               onFailure={response => this.responseSocialLogin({ response, provider: 'google' })}
-              cookiePolicy="single_host_origin"
             />
           </Grid>
         </Container>
@@ -192,6 +208,31 @@ export class Signin extends Component {
 
 Signin.propTypes = {
   classes: PropTypes.object.isRequired,
+  error: PropTypes.any.isRequired,
+  onSocialLogin: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
 };
 
-export default withStyles(useStyles)(Signin);
+Signin.defaultProps = {
+  loading: null,
+};
+
+/**
+ * @param {*} { auth }
+ * @returns {object} props
+ */
+const mapStateToProps = ({ signinState }) => {
+  const { loading, error } = signinState;
+  return { loading, error };
+};
+
+/**
+ * @param {*} dispatch
+ * @returns {object} props
+ */
+const mapDispatchToProps = dispatch => ({
+  onSocialLogin: (accessToken, provider) => dispatch(socialLogin(accessToken, provider)),
+});
+
+const signinStyled = withStyles(useStyles)(Signin);
+export default connect(mapStateToProps, mapDispatchToProps)(signinStyled);

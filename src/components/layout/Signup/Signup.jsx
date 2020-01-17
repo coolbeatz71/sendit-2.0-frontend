@@ -277,12 +277,10 @@ Signup.propTypes = {
   error: PropTypes.any.isRequired,
   onSignup: PropTypes.func.isRequired,
   loading: PropTypes.bool,
-  user: PropTypes.object,
 };
 
 Signup.defaultProps = {
   loading: null,
-  user: null,
 };
 
 /**
@@ -290,8 +288,8 @@ Signup.defaultProps = {
  * @returns {object} props
  */
 const mapStateToProps = ({ signupState }) => {
-  const { loading, error, user } = signupState;
-  return { loading, error, user };
+  const { loading, error } = signupState;
+  return { loading, error };
 };
 
 /**

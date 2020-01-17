@@ -36,7 +36,7 @@ export const signup = ({ firstName, lastName, email, password }) => async dispat
   dispatch(signupStarted());
   try {
     const res = await api.post(
-      `/auth/signup`,
+      '/auth/signup',
       {
         firstName,
         lastName,

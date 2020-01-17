@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignInAlt, faInfoCircle, faEnvelopeOpenText } from '@fortawesome/free-solid-svg-icons';
 import { openSignInModal } from '../../../redux/actions';
 import { OPEN_SIGNIN_MODAL } from '../../../redux/action-types';
+import { HomeContext } from '../../../contexts/HomeContext';
 import Logo from '../../common/Logo/Logo';
 import Signin from '../Signin/Signin';
 import Modal from '../Modal/Modal';
@@ -42,9 +43,13 @@ const NavBar = props => {
    */
   const signInModal = () => {
     return (
-      <Modal from={OPEN_SIGNIN_MODAL}>
-        <Signin />
-      </Modal>
+      <HomeContext.Consumer>
+        {context => (
+          <Modal from={OPEN_SIGNIN_MODAL}>
+            <Signin context={context} />
+          </Modal>
+        )}
+      </HomeContext.Consumer>
     );
   };
 
