@@ -17,7 +17,7 @@
     "axios": "^0.19.0",
     "babel-eslint": "^10.0.3",
     "dotenv": "^8.2.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mobile-detector": "^1.0.3",
     "node-sass": "^4.13.0",
     "prop-types": "^15.7.2",
